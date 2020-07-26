@@ -34,8 +34,9 @@ def bruteforce(host):
                         if brutePass == host:
                                 end = time()
                                 print('\n*****Succesfully hacked*****')
-                                print('* Password is', brutePass ,' *\n* Time lost : ', round(end - start),
-                                        ' *\n* tries to hack: ', tries ,' *\a\a')
+                                print('* Password is {} *'.format(brutePass))
+                                print('* Time lost : {} secs *'.format(round(end - start)))
+                                print('* tries to hack: {} *\a\a'.format(tries))
                                 cycle = False
                                 DeniedPass = None
                         else:
