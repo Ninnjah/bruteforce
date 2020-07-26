@@ -1,10 +1,11 @@
 import random
 import string
-import time
+from time import time
+from os import system
 
 def passwordgen(password, host, chares):
-        chars0 = string.ascii_letters# + string.digits + "@$*!?/"
-        chars1 = string.ascii_letters + string.digits# + "@$*!?/"
+        chars0 = string.ascii_letters
+        chars1 = string.ascii_letters + string.digits
         chars2 = string.ascii_letters + string.digits + "@$*!?/"
         i = 0
         charsn = ''
@@ -24,22 +25,26 @@ def bruteforce(host):
         DeniedPass = []
         cycle = True
         chares = int(input('* Brute only letter[0], letters and digits[1], letters, digits and symbols[2] *\n'))
-        start = time.time()
+        start = time()
         tries = 0
-        print(start)
         while cycle == True:
                 password=''
                 brutePass = passwordgen(password, host, chares)
                 if brutePass not in DeniedPass:
                         if brutePass == host:
-                                end = time.time()
-                                print('*****Succesfully hacked*****\n* Password is ', brutePass ,' *\n* Time lost : ',end - start,' *\n* tries to hack: ', tries ,' *')
+                                end = time()
+                                print('\n*****Succesfully hacked*****')
+                                print('* Password is', brutePass ,' *\n* Time lost : ', round(end - start),
+                                        ' *\n* tries to hack: ', tries ,' *\a\a')
                                 cycle = False
+                                DeniedPass = None
                         else:
-                                print(brutePass, ' not password\n')
+                                print('{} not password. tries: {}'.format(brutePass, tries), end='\r')
                                 tries += 1
                                 DeniedPass.append(brutePass)
 
+# Clear the console // Очистка консоли
+system('cls||clear')  
 host = input('Input password to check:  ')
 bruteforce(host)
 exits = input('\n\nPress Enter..')
