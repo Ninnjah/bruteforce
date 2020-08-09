@@ -15,3 +15,14 @@ while i < len(host):
     password = password + random.choice(charsn)
     i += 1
 ```
+
+- Password list
+Usage:
+> Enter brutelist".txt" name: brute
+```python
+def passwordlist(brutelist):
+        with open(brutelist + '.txt', 'r', encoding='utf-8', errors='ignore') as f:   
+            passwords = f.readlines()                   # Записываем каждую строку файла в список
+        passwords = [x.strip() for x in passwords]      # Удаляем служебные символы
+        return passwords
+```
